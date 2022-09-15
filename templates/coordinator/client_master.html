@@ -1,0 +1,39 @@
+{% extends 'coordinator/base.html' %}
+{% block content %}
+
+<h1 class="h2 my-5">Client Master</h1>
+<div class="container-fluid">
+    <table class="table mx-4 table-striped">
+        <thead>
+
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">SL No.</th>
+              <th scope="col">Name</th>
+              <th scope="col">Location</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for client in page_obj%}
+            <tr>
+              <th scope="row">{{client.id}}</th>
+              <td>{{client.serial_number}}</td>
+              <td>{{client.name}}</td>
+              <td>{{client.location}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+          
+          <div>
+            {%if page_obj.has_previous %} 
+                <a href="?page={{page_obj.previous_page_number}}"><</a> 
+            {% endif %}
+            <span>{{page_obj.number}}</span> 
+            {%if page_obj.has_next %} 
+                <a href="?page={{page_obj.next_page_number}}">></a> 
+            {% endif %}
+          </div>
+    </table>
+</div>
+
+ {% endblock %}

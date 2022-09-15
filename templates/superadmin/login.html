@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>superadmin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link href="{% static 'css/superadmin/login.css' %}" type="text/css" rel="stylesheet">
+    
+   
+
+</head>
+<body>
+    
+    <div class="container-fluid text-center">
+        <main class="form-signin w-100 m-auto">
+            <form method="post" autocomplete="off">
+                {% csrf_token %}
+              <img class="mb-4" src="{% static 'images/qurios-logo.png'%}" alt="" width="120" height="40">
+              <h1 class="h3 mb-3 fw-normal">Super Admin Sign in</h1>
+          
+              <div class="form-floating">
+                <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <label for="floatingInput">Email address</label>
+              </div>
+              <div class="form-floating">
+                <input type="password" name="password" class="form-control" id="floatingPassword " placeholder="Password">
+                <label for="floatingPassword">Password</label>
+              </div>
+              
+              <button class="w-100 btn btn-lg btn-primary mb-3" type="submit">Sign in</button>
+              <a class="btn btn-outline-info w-100" href="{% url 'coordinator:coordinator-login' %}" >Coordinator Login</a>
+              <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
+            </form>
+          </main>
+    </div>
+ 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+.panel-body {
+    margin-left: auto;
+    margin-right: auto;
+  
+}
+main {
+    margin-top: 150px;
+    width: 250px;
+}
+
+.coordinator {
+    margin-top: 5rem;
+}
+
+.show-password {
+    color: blue;
+    font-size: small;
+    cursor: pointer;
+}

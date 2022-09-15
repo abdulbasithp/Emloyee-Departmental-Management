@@ -1,0 +1,37 @@
+{% extends 'superadmin/base.html' %}
+{% block content %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token%}
+        {{form.as_p}}
+        <div class="text-end">
+            <span class="generate-password" style="color:blue;cursor:pointer;" >Generate</span>
+            <span class='show-password align-right ms-4'style="color:blue;cursor:pointer;" >show</span></div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+    
+    <script>
+        $(document).ready(function(){
+            $(".show-password").click(function(){
+            if ($('#password-field').attr('type')=== 'password') {
+                $('#password-field').attr('type','text');
+                $('.show-password').text('hide');
+
+            } else {
+                $('#password-field').attr('type','password');
+                $('.show-password').text('show');
+            }
+          });
+          $(".generate-password").click(function(){
+            var password = document.getElementById('password-field');
+            var length = 8,
+            charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+            retVal = "";
+            for (var i = 0, n = charset.length; i < length; ++i) {
+                retVal += charset.charAt(Math.floor(Math.random() * n));
+            };
+            document.getElementById('password-field').value = retVal;
+        });
+        });
+   
+    </script>
+{% endblock content %}

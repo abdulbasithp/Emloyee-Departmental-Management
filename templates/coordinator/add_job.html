@@ -1,0 +1,32 @@
+{% extends 'coordinator/base.html' %}
+{% block content %}
+
+<h1 class="h2 my-5">Job List</h1>
+<form method="post">
+    {% csrf_token %}
+    <div class="d-flex ms-4 mb-5">
+        <input class="form-control w-50" name="title" type="text"/>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+
+<div class="container-fluid">
+    <table class="table mx-4 table-striped">
+        <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Job Title</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for job in jobs %}
+            <tr>
+              <th scope="row">{{job.id}}</th>
+              <td>{{job.title}}</td>
+            </tr>
+        </tbody>
+          {% endfor %}
+    </table>
+</div>
+
+{% endblock %}

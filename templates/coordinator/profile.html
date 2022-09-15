@@ -1,0 +1,21 @@
+{% extends 'coordinator/base.html' %}
+{% block content %}
+
+<h1 class="h2 my-5">Coordinator Profile</h1>
+<div class="row">
+    <div class="col text-center">
+        <img class="mt-5" src="{{ user.profile_picture.url }}" width="200px" />
+    </div>
+    <div class="col">
+        <h1 class="h4 my-4">Full Name : {{user.full_name}}</h1>
+        <h1 class="h4 my-4">Email :   {{user.email}}</h1>
+        <h1 class="h4 my-4">Contact No : {{user.contact}}</h1>
+
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}

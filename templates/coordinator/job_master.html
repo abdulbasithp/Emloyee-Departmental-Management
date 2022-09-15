@@ -1,0 +1,77 @@
+{% extends 'coordinator/base.html' %}
+{% block content %}
+{% load static %}
+<h1 class="h2 mt-5">Job Master</h1>
+<div class="text-end me-4">
+    <a class='btn btn-info btn-sm' href="{% url 'coordinator:add-job' %}"> Add Job </a>
+</div>
+<div class="mt-5">
+    <div class='row'>
+        <div class='col-6'>
+          <form method="post">  
+            {% csrf_token %}
+            <select class="form-select form-select-sm mb-2" name="client_id" id='select-client' name='client' aria-label=".form-select-sm example">
+                <option value=''>Select Client</option>
+                {% for client in clients %}
+                <option value={{client.id}}>{{client.name}}</option>
+                {% endfor %}
+            </select>
+            
+            <select class="form-select form-select-sm mb-2" name="job_id" id='select-job' name='client' aria-label=".form-select-sm example">
+              <option value=''>Select job</option>
+              {% for job in jobs %}
+              <option value={{job.id}}>{{job.title}}</option>
+              {% endfor %}
+            </select>
+          
+            <select class="form-select form-select-sm mb-2" name="inspector_id" id='select-inspector' name='client' aria-label=".form-select-sm example">
+                <option value=''>Select inspector</option>
+                {% for inspector in inspectors %}
+                <option value={{inspector.id}}>{{inspector.full_name}}</option>
+                {% endfor %}
+            </select>
+            <input type="date" name="date" class="form-control mb-4"/>
+            <button type="submit" class="btn btn-primary btn-sm">Assign Job</button>
+        </form>
+        </div>
+        <div class='col-6 p-4'>
+            <h5 >Client Name: <span id="client-name" style="color:blue;"></span></h5>
+            <h5 >Client Serial Name: <span id="client-serial" style="color:blue;"></span></h5>
+            <h5 >Client Location: <span id="client-location" style="color:blue;"></span></h5>
+        </div>
+    </div>
+    <div class="mb-5">
+        <table class="table">
+            
+            <thead>
+                <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Client</th>
+                <th scope="col">Job</th>
+                <th scope="col">Inspector</th>
+                <th scope="col">Location</th>
+                <th scope="col">Date</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for job_assign in jobs_assigned %}
+            <tr>
+                <td>{{job_assign.id}}</td>
+                <td>{{job_assign.client.name}}</td>
+                <td>{{job_assign.job.title}}</td>
+                <td>{{job_assign.inspector.full_name}}</td>
+                <td>{{job_assign.location}}</td>
+                <td>{{job_assign.date}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+           
+        </table>
+    </div>
+</div>
+
+<script src="{% static 'js/job_master.js' %}"></script>
+
+
+
+{% endblock %}

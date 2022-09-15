@@ -1,0 +1,39 @@
+{% extends 'superadmin/base.html' %}
+{% block content %}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2 mb-5">Manage Manager</h1>
+    <a href="{% url 'account:add-manager' %}" class="btn btn-warning">Add Manager</a>
+
+</div>
+<div>
+    <table class="table table-striped">
+        <thead>
+
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">firstname</th>
+              <th scope="col">email</th>
+              <th scope="col">username</th>
+              <th scope="col">View</th>
+              <th scope="col">Edit</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for manager in managers %}
+            <tr>
+              <th scope="row">{{manager.id}}</th>
+              <td>{{manager.full_name}}</td>
+              <td>{{manager.email}}</td>
+              <td>{{manager.username}}</td>
+              <td><a href="{% url 'account:manager-detail' manager.id %}" class='btn btn-primary btn-sm'>View</a></td>
+              <td><a href="{% url 'account:edit-manager' manager.id %}" class='btn btn-info btn-sm'>Edit</a></td>
+            </tr>
+           
+          </tbody>
+          {% endfor %}
+    </table>
+</div>
+
+
+ {% endblock %}

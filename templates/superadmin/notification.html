@@ -1,0 +1,19 @@
+{% extends 'superadmin/base.html' %}
+{% block content %}
+<style>
+.notification {
+    
+    background-color:#e4b6f0;
+    border:0.4px solid;
+    margin-bottom:3px:
+}
+</style>
+
+<div class="container text-center">
+    {% for notification in notifications %}
+    <p class="notification">{{notification.message}}</p>
+    {% endfor %}
+</div>
+
+
+{% endblock %}

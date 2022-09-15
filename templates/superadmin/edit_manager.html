@@ -1,0 +1,26 @@
+{% extends 'superadmin/base.html' %}
+{% block content %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token%}
+        {{form.as_p}}
+        <div class="text-end">
+            <span class='show-password align-right'style="color:blue;cursor:pointer;" >show</span></div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+    <script>
+        $(document).ready(function(){
+            $(".show-password").click(function(){
+            if ($('#password-field').attr('type')=== 'password') {
+                $('#password-field').attr('type','text');
+                $('.show-password').text('hide');
+
+            } else {
+                $('#password-field').attr('type','password');
+                $('.show-password').text('show');
+            }
+          });
+        });
+   
+    </script> 
+
+{% endblock content %}
