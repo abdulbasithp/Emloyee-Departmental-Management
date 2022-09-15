@@ -29,6 +29,8 @@ Login: By default, super admin must first login to gain access to the
 admin panel (default username and password should be set for super
 admin).
 Logout: super admin has the ability to logout out of the admin panel
+
+
 Coordinator admin panel view
 Will have following sections or menu links:
 1. Inspector Master: Coordinator can add or edit inspectors from
